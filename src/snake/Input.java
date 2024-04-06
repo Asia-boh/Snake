@@ -6,7 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JRootPane;
 
 public class Input implements Runnable {
-	//Thread gameThread;
 	public char currentKey = 'd';
 	public char currentDirection = 'd';
 	private static Input instance;

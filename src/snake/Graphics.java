@@ -131,22 +131,18 @@ public class Graphics implements Runnable{
 		switch (p.currentDirection) {
 		case 'w':
 			colHead --;
-			updatePosition();
 			break;
 		case 'a':
 			rowHead -= 2;
-			updatePosition();
 			break;
 		case 's':
 			colHead++;
-			updatePosition();
 			break;
 		case 'd':
 			rowHead += 2;
-			updatePosition();
 			break;
 		}
-		
+		updatePosition();
 	}
 	
 	public void startGameThread() {
@@ -168,5 +164,4 @@ public class Graphics implements Runnable{
 			move();
 		}
 	}
-	
 }
