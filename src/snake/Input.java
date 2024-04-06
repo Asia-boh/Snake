@@ -53,16 +53,6 @@ public class Input implements Runnable {
 		return instance;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Input p = getInstance();
-		p.startGameThread();
-		while (true) {
-			//getCh();
-			//System.out.println(currentKey);
-		}
-	}
-
 	public static void getCh() {
 		final JFrame frame = new JFrame();
 		synchronized (frame) {
@@ -101,17 +91,11 @@ public class Input implements Runnable {
 		keyboardThread.start();
 
 	}
-	public static void clearConsole() {
-	    System.out.print("\033[H\033[2J"); // Sequenza per pulire la console
-	    System.out.flush();
-	}
 	
 	@Override
 	public void run() {
 		while (keyboardThread != null) {
-			//System.out.println("looooooooooooooooop");
 			getCh();
-			//System.out.println(currentKey);
 		}
 	}
 }

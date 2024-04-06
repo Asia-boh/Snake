@@ -159,7 +159,7 @@ public class Graphics implements Runnable{
 	public void run() {
 		while(printThread != null) {
 			try {
-				Thread.sleep(500);
+				Thread.sleep(250);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
