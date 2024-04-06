@@ -5,14 +5,14 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
 
-public class ProvaInput implements Runnable {
+public class Input implements Runnable {
 	//Thread gameThread;
 	public char currentKey = 'd';
 	public char currentDirection = 'd';
-	private static ProvaInput instance;
+	private static Input instance;
 	public Thread keyboardThread;
 	
-	private ProvaInput() {}
+	private Input() {}
 	
 	private boolean isDirectionChangeAvailable() {
 		switch (currentDirection) {
@@ -46,16 +46,16 @@ public class ProvaInput implements Runnable {
 		}
 	}
 	
-	public static ProvaInput getInstance(){
+	public static Input getInstance(){
 		if(instance == null) {
-			instance = new ProvaInput();
+			instance = new Input();
 		}
 		return instance;
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		ProvaInput p = getInstance();
+		Input p = getInstance();
 		p.startGameThread();
 		while (true) {
 			//getCh();

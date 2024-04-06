@@ -2,7 +2,7 @@ package snake;
 
 public class Main {
 	public static void main(String[] args) {
-		Grafica g = new Grafica();
+		Graphics g = new Graphics();
 		g.startGameThread();
 		g.p.startGameThread();
 	}

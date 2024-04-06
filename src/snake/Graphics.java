@@ -2,7 +2,7 @@ package snake;
 
 import java.util.ArrayList;
 
-public class Grafica implements Runnable{
+public class Graphics implements Runnable{
 	private ArrayList<Integer> colSnake = new ArrayList<>();
 	private ArrayList<Integer> rowSnake = new ArrayList<>();
 	private int colHead;
@@ -17,9 +17,9 @@ public class Grafica implements Runnable{
 	private String snakeHead = "\u25a3";
 	int appleCounter = 0;
 	private Thread printThread = null;
-	public ProvaInput p = ProvaInput.getInstance();
+	public Input p = Input.getInstance();
 	
-	public Grafica() {
+	public Graphics() {
 		settaGioco();
 	}
 	
