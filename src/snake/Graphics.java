@@ -20,10 +20,10 @@ public class Graphics implements Runnable{
 	public Input p = Input.getInstance();
 	
 	public Graphics() {
-		settaGioco();
+		setGame();
 	}
 	
-	private void settaGioco() {
+	private void setGame() {
 		allSpacesTable();
 		setHorizontalLimit();
 		setVerticalLimit();
@@ -31,7 +31,7 @@ public class Graphics implements Runnable{
 		setBaseApple();
 	}
 	
-	public void stampaGioco() {
+	public void printGame() {
 		System.out.println(apple + ": " + appleCounter);
 		for(int i = 0; i < table[0].length; i++) {
 			for(int j = 0; j < table.length; j++) {
@@ -164,7 +164,7 @@ public class Graphics implements Runnable{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			stampaGioco();
+			printGame();
 			move();
 		}
 	}
