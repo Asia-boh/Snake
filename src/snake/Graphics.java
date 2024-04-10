@@ -9,12 +9,12 @@ public class Graphics implements Runnable{
 	private int rowHead;
 	private int colSize = 15 + 2;
 	private int rowSize = colSize*2 + 2;
-	private String[][] table = new String[rowSize][colSize];
-	private String hor = "_";
-	private String ver = "|";
-	private String apple = "\u25cc";
-	private String snakeBody = "\u25a1";
-	private String snakeHead = "\u25a3";
+	private char[][] table = new char[rowSize][colSize];
+	private char hor = '_';
+	private char ver = '|';
+	private char apple = '\u25cc';
+	private char snakeBody = '\u25a1';
+	private char snakeHead = '\u25a3';
 	int appleCounter = 0;
 	private Thread printThread = null;
 	public Input p = Input.getInstance();
@@ -44,7 +44,7 @@ public class Graphics implements Runnable{
 	private void allSpacesTable() {
 		for(int i = 0; i < table[0].length; i++) {
 			for(int j = 0; j < table.length; j++) {
-				table[j][i] = " ";
+				table[j][i] = ' ';
 			}
 		}
 	}
@@ -86,7 +86,7 @@ public class Graphics implements Runnable{
 	public void generateApple() {
 		int appleRow = 0;
 		int appleCol = 1;
-		while(!table[appleRow][appleCol].equals(" ")) {
+		while(table[appleRow][appleCol] != ' ') {
 			appleRow = (int) (Math.random()*16)*2 + 1;
 			appleCol = (int) (Math.random()*14 + 1);
 		}
@@ -95,7 +95,7 @@ public class Graphics implements Runnable{
 	
 	private boolean isMoveAvailable() {
 		if(rowHead > 0) {
-			if(!table[rowHead][colHead].equals(" ") && !table[rowHead][colHead].equals(apple)) {
+			if(table[rowHead][colHead] != ' ' && table[rowHead][colHead] != apple) {
 				return false;
 			}
 		}
@@ -112,12 +112,12 @@ public class Graphics implements Runnable{
 			p.keyboardThread = null;
 			System.out.print("Game over (sei scarso)");
 		}
-		if(table[rowHead][colHead].equals(apple)) {
+		if(table[rowHead][colHead] == apple) {
 			appleCounter++;
 			generateApple();
 		}
 		else {
-			table[rowSnake.get(0)][colSnake.get(0)] = " ";
+			table[rowSnake.get(0)][colSnake.get(0)] = ' ';
 			colSnake.remove(0);
 			rowSnake.remove(0);
 		}
