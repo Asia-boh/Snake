@@ -5,11 +5,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
 
-public class Input implements Runnable {
+public class Input{
 	public char currentKey = 'd';
 	public char currentDirection = 'd';
 	private static Input instance;
-	public Thread keyboardThread;
+	public boolean isMoveAvailable = true;
+	final JFrame frame = new JFrame();
 	
 	private Input() {}
 	
@@ -52,22 +53,15 @@ public class Input implements Runnable {
 		return instance;
 	}
 	
-	public static void getCh() {
-		final JFrame frame = new JFrame();
-		synchronized (frame) {
+	public void getCh() {
 			frame.setUndecorated(true);
 			frame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
 			frame.addKeyListener(new KeyListener() {
 				@Override
 				public void keyPressed(KeyEvent e) {
-					synchronized (frame) {
-						frame.setVisible(false);
-						instance.currentKey = e.getKeyChar();
-						instance.changeDirection();
-						frame.dispose();
-						frame.notify();
+						currentKey = e.getKeyChar();
+						changeDirection();
 					}
-				}
 
 				@Override
 				public void keyReleased(KeyEvent e) {
@@ -78,23 +72,10 @@ public class Input implements Runnable {
 				}
 			});
 			frame.setVisible(true);
-			try {
-				frame.wait();
-			} catch (InterruptedException e1) {
-			}
-		}
-	}
-
-	public void startGameThread() {
-		keyboardThread = new Thread(this);
-		keyboardThread.start();
-
 	}
 	
-	@Override
-	public void run() {
-		while (keyboardThread != null) {
-			getCh();
-		}
+	public void exit() {
+		frame.setVisible(false);
+		frame.dispose();
 	}
 }
